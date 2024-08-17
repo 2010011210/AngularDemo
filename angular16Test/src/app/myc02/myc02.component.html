@@ -1,0 +1,27 @@
+<p>myc02 works!</p>
+<table border="1">
+    <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>性别</td>
+    </tr>
+    <tr *ngFor="let item of workers; let i = index">
+        <td>{{ i + 1}}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.sex | gender}}</td>
+        <td>{{ item.sex | gender:"en"}}</td>
+    </tr>
+</table>
+<ul>
+    <li *ngFor="let item of names">{{ item }}</li>
+</ul>
+<button (click)="names.push('小新')">添加人员</button>
+
+<h1>服务</h1>
+<ul>
+    <li *ngFor="let item of nameS.names">{{item}}</li>
+</ul>
+<!--新建管道  ng g p 管道名称-->

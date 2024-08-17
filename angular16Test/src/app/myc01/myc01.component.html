@@ -1,0 +1,77 @@
+<p>myc01 works!</p>
+<ul>
+    <li>{{ name }}</li>
+    <li>{{ age }}</li>
+    <li>{{ job }}</li>
+    <li>{{ address.city }}</li>
+    <li>{{ goodMan }}</li>
+    <li>{{ age > 35 ? '退休': '没退休'  }}</li>
+    <!--类中的方法 -->
+    <li>{{ showName() }}</li>
+    <!--鼠标事件 -->
+    <li><button (click)="showClick()">点击事件</button></li>
+    <!--属性绑定 -->
+    <h1 [title]="name">程序员</h1>
+
+    <div [innerHTML]="html"></div>
+    <!-- 双向数据绑定-->
+    <!-- ng默认不支持数据绑定，需要在配置中引用FormsModule模块-->
+    <input type="text" [(ngModel)]="name" />
+    <div>{{name}}</div>
+    <!--style属性绑定[ngStyle], 类的绑定[ngClass]-->
+    <!--对象属性名字，不能带下划线，font-size只能是字符串或者改为小驼峰-->
+    <li [ngStyle]="{color:'red', fontSize: size + 'px'}" >{{name}}</li>
+    <div>{{size}}</div>
+    <li><button (click)="size= size +1" [ngClass]="{danger: size > 20 && size < 30, success: size >= 30}">变大</button></li>
+    <li><button (click)="minu()">变小</button></li>
+
+    <!--条件判断 *ngIf-->
+    <div>{{ score }}</div>
+    <div *ngIf="score >= 90">优秀</div>
+    <div *ngIf="score < 90 && score > 80">良好</div>
+    <div *ngIf="score < 80">及格</div>
+    <li><button (click)="score = score + 1">score变大</button></li>
+    <li><button (click)="score = score - 1">score变小</button></li>
+   
+    <!--if else  这个没有显示出来，要查一下-->  
+    <ng-container *ngIf="score > 80"; else big>
+      <b>nihao良好</b>
+    </ng-container>
+    <ng-template #big> 
+        <b>buhao良好</b> 
+    </ng-template>
+
+    <!-- switch 语句-->
+    <li><button (click)="type = type + 1">升级会员</button></li>
+    <span [ngSwitch]="type">
+       <p *ngSwitchCase="1">普通会员</p>
+       <p *ngSwitchCase="2">黄金会员</p>
+       <p *ngSwitchCase="3">白金会员</p>
+       <p *ngSwitchCase="4">钻石会员</p>
+       <p *ngSwitchDefault>会员等级未知</p>
+    </span>
+
+</ul>
+
+ <!-- 11.for循环 -->
+ <ul>
+    <li *ngFor="let item of names">{{item}}</li>
+</ul>
+<!--带i序号的-->
+<li *ngFor="let item of names; let i = index">
+    <b>{{ i }}</b>
+    <span>{{ item }}</span>
+</li>
+
+<!--12 自定义指令-->
+<!--需要 ng g d focus 新建一个文件夹-->
+<input type="text" appFocus value="123">
+<input type="text" appUpper value="hello">
+
+<!--13.管道 对应vue中的过滤器-->
+<ul>
+    <li>日期：{{ time| date:"yyyy-MM-dd HH:mm:ss"}}</li>
+    <li>钱：{{ 123| currency:"$"}}</li>
+    <li>百分数：{{ 0.562| percent:"2.1" }}</li>
+</ul>
+

@@ -1,0 +1,27 @@
+<p>myc03 works!</p>
+<div>{{name}}</div>
+<div>age:{{age}}</div>
+<div *ngIf="boos">
+    <div>BoosName:{{boos.name}}</div>
+    <div>BoosAge:{{boos.age}}</div>
+    <div>BoosSex:{{boos.sex}}</div>
+</div>
+<button (click)="returnToFather()">喜欢东东</button>
+<button (click)="msgEvent2.emit('亮亮')">喜欢亮亮</button>
+
+<!-- 服务 -->
+ <h1>服务</h1>
+<ul>
+    <li *ngFor="let item of nameS.names">{{item}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of nameS.countries">{{item}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of companyS.companyNames">{{item}}</li>
+</ul>
+
+<button (click)="nameS.names.push('周瑜')">添加周瑜</button>
+
